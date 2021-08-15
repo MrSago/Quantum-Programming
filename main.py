@@ -1,13 +1,10 @@
 
-from qrng import qrng
-from simulator import SingleQubitSimulator
+from chapters import *
 
 
 def main():
-    qsim = SingleQubitSimulator()
-    for idx_sample in range(10):
-        random_sample = qrng(qsim)
-        print(f"QRNG-генератор вернул {random_sample}.")
+    # ch2()
+    ch3()
 
 
 if __name__ == "__main__":
