@@ -1,5 +1,5 @@
 
-from interface import *
+from interface import QuantumDevice
 
 
 def qrng(device: QuantumDevice) -> bool:
