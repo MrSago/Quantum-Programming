@@ -41,27 +41,35 @@ def send_single_bit_with_bb84(
     [your_message, your_basis] = [
         sample_random_bit(your_device) for _ in range(2)
     ]
+
     eve_basis = sample_random_bit(eve_device)
+
     with your_device.using_qubit() as q:
         prepare_message_qubit(your_message, your_basis, q)
         eve_result = measure_message_qubit(eve_basis, q)
+
     return ((your_message, your_basis), (eve_result, eve_basis))
 
 
 def simulate_bb84(n_bits: int) -> tuple:
     your_device = SingleQubitSimulator()
     eve_device = SingleQubitSimulator()
+
     key = []
     n_rounds = 0
+
     while len(key) < n_bits:
         n_rounds += 1
         ((your_message, your_basis), (eve_result, eve_basis)
          ) = send_single_bit_with_bb84(your_device, eve_device)
+
         if your_basis == eve_basis:
             assert your_message == eve_result
             key.append(your_message)
+
     print(
         f"Потребовалось {n_rounds} раундов, чтобы сгенерировать {n_bits}-битовый ключ.")
+
     return key
 
 
