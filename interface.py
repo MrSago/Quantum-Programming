@@ -16,6 +16,7 @@ class Qubit(metaclass=ABCMeta):
     @abstractmethod
     def reset(self): pass
 
+
 class QuantumDevice(metaclass=ABCMeta):
     @abstractmethod
     def allocate_qubit(self) -> Qubit: pass

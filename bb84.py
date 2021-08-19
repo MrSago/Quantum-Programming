@@ -55,11 +55,13 @@ def simulate_bb84(n_bits: int) -> tuple:
     n_rounds = 0
     while len(key) < n_bits:
         n_rounds += 1
-        ((your_message, your_basis), (eve_result, eve_basis)) = send_single_bit_with_bb84(your_device, eve_device)
+        ((your_message, your_basis), (eve_result, eve_basis)
+         ) = send_single_bit_with_bb84(your_device, eve_device)
         if your_basis == eve_basis:
             assert your_message == eve_result
             key.append(your_message)
-    print(f"Потребовалось {n_rounds} раундов, чтобы сгенерировать {n_bits}-битовый ключ.")
+    print(
+        f"Потребовалось {n_rounds} раундов, чтобы сгенерировать {n_bits}-битовый ключ.")
     return key
 
 
