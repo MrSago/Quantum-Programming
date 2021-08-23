@@ -3,6 +3,7 @@ from simulator import SingleQubitSimulator
 from qrng import *
 from qkd import *
 from bb84 import *
+from chsh import *
 
 
 def ch2():
@@ -92,4 +93,8 @@ def ch3_5():
     print(f"Ева расшифровала, получив: {convert_to_hex(decrypted_message)}.")
 
     assert message == decrypted_message
+
+
+def ch4_1():
+    print(est_win_probability(constant_strategy))
 
