@@ -96,5 +96,6 @@ def ch3_5():
 
 
 def ch4_1():
-    print(est_win_probability(constant_strategy))
+    for _ in range(10):
+        print(est_win_probability(constant_strategy))
 
