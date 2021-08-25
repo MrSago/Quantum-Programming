@@ -20,10 +20,10 @@ class SimulatedQubit(Qubit):
     def __init__(self):
         self.reset()
 
-    def h(self):
+    def h(self) -> None:
         self.state = H @ self.state
 
-    def x(self):
+    def x(self) -> None:
         self.state = X @ self.state
 
     def measure(self) -> bool:
@@ -31,7 +31,7 @@ class SimulatedQubit(Qubit):
         sample = np.random.random() <= pr0
         return bool(0 if sample else 1)
 
-    def reset(self):
+    def reset(self) -> None:
         self.state = KET_0.copy()
 
 
@@ -42,6 +42,6 @@ class SingleQubitSimulator(QuantumDevice):
         if self.available_qubits:
             return self.available_qubits.pop()
 
-    def deallocate_qubit(self, qubit: SimulatedQubit):
+    def deallocate_qubit(self, qubit: SimulatedQubit) -> None:
         self.available_qubits.append(qubit)
 

@@ -1,8 +1,6 @@
 
 import random
-from functools import partial
 from typing import Tuple, Callable
-import numpy as np
 
 
 Strategy = Tuple[Callable[[int], int], Callable[[int], int]]

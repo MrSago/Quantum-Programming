@@ -5,16 +5,16 @@ from contextlib import contextmanager
 
 class Qubit(metaclass=ABCMeta):
     @abstractmethod
-    def h(self): pass
+    def h(self) -> None: pass
 
     @abstractmethod
-    def x(self): pass
+    def x(self) -> None: pass
 
     @abstractmethod
     def measure(self) -> bool: pass
 
     @abstractmethod
-    def reset(self): pass
+    def reset(self) -> None: pass
 
 
 class QuantumDevice(metaclass=ABCMeta):
@@ -22,7 +22,7 @@ class QuantumDevice(metaclass=ABCMeta):
     def allocate_qubit(self) -> Qubit: pass
 
     @abstractmethod
-    def deallocate_qubit(self, qubit: Qubit): pass
+    def deallocate_qubit(self, qubit: Qubit) -> None: pass
 
     @contextmanager
     def using_qubit(self):
