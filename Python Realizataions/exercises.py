@@ -1,7 +1,9 @@
 
 import numpy as np
-import random
+import qutip as qt
 from typing import Tuple, Callable
+
+from qutip.qobj import Qobj
 from interface import QuantumDevice
 from simulator import SingleQubitSimulator
 
@@ -18,13 +20,13 @@ ket1 = np.array([
 # print(ket1)
 
 
-ket_plus = (ket0 + ket1) / np.sqrt(2)  # operation |+>
-ket_minus = (ket0 - ket1) / np.sqrt(2)  # operation |->
+ket_plus = (ket0 + ket1) / np.sqrt(2)  # operator |+>
+ket_minus = (ket0 - ket1) / np.sqrt(2)  # operator |->
 # print(ket_plus)  # [[1/sqrt(2)], [1/sqrt(2)]]
 # print(ket_minus)  # [[1/sqrt(2)], [-1/sqrt(2)]]
 
 
-# Hadamard's operation (|0> => |+> and |1> => |->)
+# Hadamard's operator (|0> => |+> and |1> => |->)
 H = np.array([
     [1, 1],
     [1, -1]
@@ -33,7 +35,7 @@ H = np.array([
 # print(H @ ket1)  # |->
 
 
-# Operation NOT
+# operator NOT
 X = np.array([
     [0, 1],
     [1, 0]
@@ -51,11 +53,11 @@ I = np.array([
 IX = np.kron(I, X)
 XX = np.kron(X, X)
 ket00 = np.kron(ket0, ket0)
-# print(IX) # I o X
-# print(XX) # X o X
-# print(ket00) # |00>
-# print(IX @ ket00) # |01>
-# print(XX @ ket00) # |11>
+# print(IX)  # I o X
+# print(XX)  # X o X
+# print(ket00)  # |00>
+# print(IX @ ket00)  # |01>
+# print(XX @ ket00)  # |11>
 
 # ========================================================
 
@@ -100,6 +102,22 @@ ket00 = np.kron(ket0, ket0)
 
 
 # Ex 4.2
-# HI = np.kron(H, I) # H o I
-# print(HI @ ket00) # |+0>
+# HI = np.kron(H, I)  # H o I
+# print(HI @ ket00)  # |+0>
+
+
+# Ex 5.1
+# ket0 = qt.Qobj([
+#     [1], [0]
+# ])
+# ket1 = qt.Qobj([
+#     [0], [1]
+# ])
+# ket_plus = Qobj((ket0 + ket1) / np.sqrt(2))
+# ket_minus = Qobj((ket0 - ket1) / np.sqrt(2))
+
+
+# Ex 5.2
+# ket10 = qt.tensor([qt.basis(2, label) for label in (1, 0)])
+# ket001 = qt.tensor([qt.basis(2, label) for label in (0, 0, 1)])
 
