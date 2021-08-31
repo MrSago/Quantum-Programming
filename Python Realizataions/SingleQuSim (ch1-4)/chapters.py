@@ -116,6 +116,6 @@ def ch3_5():
 def ch4_1() -> None:
     print("\nch4_1:")
 
-    for _ in range(5):
-        print(est_win_probability(constant_strategy))
+    constant_pr = est_win_probability(constant_strategy, 100)
+    print(f"Классическая стратегия: {constant_pr:0.1%}")
 
